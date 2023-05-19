@@ -13,24 +13,21 @@ public class Sum_of_Round_Numbers {
 
             int num = sc.nextInt();
             int m=1, count=0;
-            ArrayList<Integer> a = new ArrayList<>();
+            StringBuilder sb = new StringBuilder();
 
             while(num>0){
 
                 int temp = num%10;
                 num = num/10;
-                
+            
                 if(temp!=0){
                     count++;
-                    a.add(temp*m);  
+                    sb.append(temp*m+" ");  
                 }
-                m *= 10;              
+                m *=10;              
             }
             System.out.println(count);
-            for(int i=0;i<a.size();i++)
-                System.out.print(a.get(i)+" ");
-
-            System.out.println();
+            System.out.println(sb.toString());
         }
     }    
 }
