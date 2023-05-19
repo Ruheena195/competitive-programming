@@ -6,17 +6,24 @@ public class Chewbacca_and_Number {
     public static void main(String[] args){
 
         Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        int res = 0, t = 1;
+        String x = sc.next();
+        StringBuilder sb = new StringBuilder();
         
-        while(x > 0){
+        for(int i=1;i<x.length();i++){
 
-            int temp = x%10;
-            x = x/10;
-            temp = (temp < (9-temp)) ? temp : (9-temp);
-            res = (temp * t) + res;
-            t *= 10;
+            int temp = x.charAt(i) - '0';
+            temp = (temp < 9-temp) ? temp : 9-temp;
+            sb.append(temp);            
         }
+        int temp = x.charAt(0) - '0';
+
+        if(temp!=9)
+            temp = (temp < 9-temp) ? temp : 9-temp;
+        
+            sb.insert(0,temp); 
+
+        long res = Long.parseLong(sb.toString());
+
         System.out.println(res);
     }   
 }
