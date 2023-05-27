@@ -13,7 +13,5 @@ public class Vanya_and_Cubes {
             total += sum;
         }
         System.out.println(height);
-
-        //System.out.println(Math.log(N)/Math.log(2));
     }    
 }
