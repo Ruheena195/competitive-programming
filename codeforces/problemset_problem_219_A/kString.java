@@ -7,40 +7,47 @@ public class kString {
 
         int k = sc.nextInt();
         String st = sc.next();
-        StringBuilder sb = new StringBuilder();
-        int[] arr = new int[26];
 
-        for(int i=0;i<st.length();i++)
-            arr[st.charAt(i)-'a']++;
+        if(st.length()%k !=0)
+            System.out.println(-1);
 
-        int flag=0;
+        else{
+            
+            StringBuilder sb = new StringBuilder();
+            int[] arr = new int[26];
 
-        for(int i=k;i>0;i--){
-            for(int j=0;j<26;j++){
+            for(int i=0;i<st.length();i++)
+                arr[st.charAt(i)-'a']++;
 
-                if(arr[j]==0)
-                    continue;
+            int flag=0;
 
-                else if(arr[j]!=i){
-                    flag=1;
+            for(int i=k;i>0;i--){
+                for(int j=0;j<26;j++){
+
+                    if(arr[j]==0)
+                        continue;
+
+                    else if(arr[j]%i!=0){
+                        flag=1;
+                        break;
+                    }
+                    else{
+                        int t = arr[j]/i;
+                        while(t-- > 0)
+                            sb.append((char)(j+'a'));
+                        arr[j] -= (arr[j]/i);
+                    }
+                }
+
+                if(flag==1)
                     break;
-                }
-                else{
-                    int t = arr[j]/i;
-                    while(t-- > 0)
-                        sb.append((char)(j+'a'));
-                    arr[j] -= (arr[j]/i);
-                }
             }
 
             if(flag==1)
-                break;
+                System.out.println(-1);
+            else
+                System.out.println(sb.toString());
         }
-
-        if(flag==1)
-            System.out.println(-1);
-        else
-            System.out.println(sb.toString());
 
     }
     
