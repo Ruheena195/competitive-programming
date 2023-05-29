@@ -21,32 +21,26 @@ public class kString {
 
             int flag=0;
 
-            for(int i=k;i>0;i--){
-                for(int j=0;j<26;j++){
+            for(int j=0;j<26;j++){
 
-                    if(arr[j]==0)
-                        continue;
-
-                    else if(arr[j]%i!=0){
-                        flag=1;
-                        break;
-                    }
-                    else{
-                        int t = arr[j]/i;
-                        while(t-- > 0)
-                            sb.append((char)(j+'a'));
-                        arr[j] -= (arr[j]/i);
-                    }
+                if(arr[j]%k!=0){
+                    // flag=1;
+                    // break;
+                    System.out.println(-1);
+                    return;
                 }
-
-                if(flag==1)
-                    break;
+                else{
+                    int t = arr[j]/k;
+                    while(t-- > 0)
+                        sb.append((char)(j+'a'));
+ 
+                }
             }
+            StringBuilder res = new StringBuilder();
+            while(k-- > 0)
+                res.append(sb);
 
-            if(flag==1)
-                System.out.println(-1);
-            else
-                System.out.println(sb.toString());
+            System.out.println(res.toString());
         }
 
     }
