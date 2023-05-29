@@ -8,23 +8,31 @@ public class Game_ {
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        int ans = solve(n,m);
-        //System.out.println(ans);
+        if(m==n)
+            System.out.println(0);
 
-        if(ans>=10000)
+        else if(m%n != 0)
             System.out.println(-1);
-        else
-            System.out.println(ans);       
-    }
-    public static int solve(int n,int m){
-        if(n==m)
-            return 0;
 
-        if(n>m)
-            return 10000;
+        //  n * t = m -> t = m/n then t should be multiple of 2,3  
 
-        int res = Math.min(solve(n*2,m) , solve(n*3,m))+1;
-
-        return res;
+        else{
+            int t = m/n;
+            int count =0;
+            
+            while(t%2==0){
+                count++;
+                t /= 2;
+            }
+            while(t%3 == 0){
+                count++;
+                t /=3;
+            }
+            if(t != 1)
+                System.out.println(-1);
+            else
+                System.out.println(count);
+        }
+        
     }
 }
