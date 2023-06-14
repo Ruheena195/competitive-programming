@@ -15,27 +15,27 @@ public class week2_Q2 {
 
             for(int i=0;i<N;i++){
                 arr[i] = sc.nextInt();
-                //lt.add(new int[]{arr[i],i});
+                lt.add(new int[]{arr[i],i});
             }
 
             int res = 0;
 
-            for(int i=0;i<N;i++){
-                for(int j=i+1;j<N;j++){
-                    res = Math.max(res, Math.abs(i - j) * Math.min(arr[i],arr[j]));
-                }
-            }
-
-            // Collections.sort(lt, (a,b)->b[0]-a[0]);
-            
-            // int result = 0;
-
-            // for(int i=0;i<lt.size()-1;i++){
-            //     int[] a = lt.get(i);
-            //     int[] b = lt.get(i+1);
-            //     int prod = Math.abs(a[1] - b[1]) * Math.min(a[0],b[0]); 
-            //     result = Math.max(result, prod);
+            // for(int i=0;i<N;i++){
+            //     for(int j=i+1;j<N;j++){
+            //         res = Math.max(res, Math.abs(i - j) * Math.min(arr[i],arr[j]));
+            //     }
             // }
+
+            Collections.sort(lt, (a,b)->b[0]-a[0]);
+            
+            int result = 0;
+
+            for(int i=0;i<lt.size()-1;i++){
+                int[] a = lt.get(i);
+                int[] b = lt.get(i+1);
+                int prod = Math.abs(a[1] - b[1]) * Math.min(a[0],b[0]); 
+                result = Math.max(result, prod);
+            }
              System.out.println(res);
 		}
 	
