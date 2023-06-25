@@ -8,24 +8,29 @@ public class Diverse_Substring {
         String s = sc.next();
 
         int[] arr = new int[26];
+        StringBuilder sb = new StringBuilder();
 
-        for(int i=0;i<n;i++)
-            arr[s.charAt(i)-'a']++;
+        int start=0;
 
-        int k = n/2, flag=0;
+        for(int end=0;end<n;end++){
+            int val = s.charAt(end)-'a';
+            arr[val]++;
+            sb.append(s.charAt(end));
 
-        for(int i=0;i<26;i++){
-            if(arr[i]>k){
-                flag=1;
-                break;
+            while(sb.length()>1 && arr[val]>(sb.length()/2)){
+                arr[s.charAt(start)-'a']--;
+                start++;
+                sb.delete(0,1);
+            }
+
+            if(sb.length()>1){
+                System.out.println("YES");
+                System.out.println(sb.toString());
+                return;
             }
         }
-        if(flag==1)
-            System.out.println("NO");
-        else{
-            System.out.println("YES");
-            System.out.println(s);
-        }
+        System.out.println("NO");
+        
     }
     
 }
