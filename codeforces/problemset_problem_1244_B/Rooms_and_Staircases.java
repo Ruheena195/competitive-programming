@@ -20,15 +20,30 @@ public class Rooms_and_Staircases {
             System.out.println(2*n);
             return;
         }
-        int f = s.indexOf("1");
-        if(f==-1){
-            System.out.println(n);
-            return;
-        }
-        int l =s.lastIndexOf("1");
-
-        int count = Math.max(n-f, l);
         
-        System.out.println(2*count);
+        int left=0;
+
+        for(int i=0;i<n;i++){
+            if(s.charAt(i)=='1'){
+                left=i;
+                break;
+            }
+        }
+        int i=-1, right=-1;
+
+        for(int j=n-1;j>=0;j--){
+            i++;
+            if(s.charAt(j)=='1'){
+                right=i;
+                break;
+            }
+        }
+        int res=0;
+        if(right==-1)
+            res = n;
+        else
+            res = 2*(n-Math.min(left,right));
+
+        System.out.println(res);
     }
 }
